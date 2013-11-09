@@ -1,6 +1,7 @@
 # Dotfiles
 
-My OS X / Ubuntu dotfiles.
+My OS X / Ubuntu dotfiles, started with [Cowboy's](https://github.com/cowboy/dotfiles),
+but made a clean break. Much of this is as he built it.
 
 ## Why is this a git repo?
 
