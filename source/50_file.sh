@@ -35,6 +35,8 @@ alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 # Aliasing eachdir like this allows you to use aliases/functions as commands.
 alias eachdir=". eachdir"
 
+alias reload="echo 'source ~/.bashrc'; source ~/.bashrc"
+
 # Create a new directory and enter it
 function md() {
   mkdir -p "$@" && cd "$@"
