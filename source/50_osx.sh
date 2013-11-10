@@ -5,6 +5,11 @@
 PATH=/usr/local/bin:$(path_remove /usr/local/bin)
 export PATH
 
+# This will enable Homebrew's bash-completion.
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
@@ -13,6 +18,9 @@ eval "$(lesspipe.sh)"
 
 # Start ScreenSaver. This will lock the screen if locking is enabled.
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+
+# Open finder to the current path.
+alias finder='open /System/Library/CoreServices/Finder.app $PWD'
 
 # Create a new Parallels VM from template, replacing the existing one.
 function vm_template() {
