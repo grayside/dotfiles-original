@@ -22,20 +22,19 @@
 # 32  42  green     36  46  cyan
 # 33  43  yellow    37  47  white
 
-if [[ ! "${prompt_colors[@]}" ]]; then
-  prompt_colors=(
-    "36" # information color
-    "37" # bracket color
-    "31" # error color
-  )
+prompt_colors=(
+  "32" # information color
+  "35" # bracket color
+  "31" # error color
+  "33" # vcs color
+)
 
-  if [[ "$SSH_TTY" ]]; then
-    # connected via ssh
-    prompt_colors[0]="32"
-  elif [[ "$USER" == "root" ]]; then
-    # logged in as root
-    prompt_colors[0]="35"
-  fi
+if [[ "$SSH_TTY" ]]; then
+  # connected via ssh
+  prompt_colors[0]="36"
+elif [[ "$USER" == "root" ]]; then
+  # logged in as root
+  prompt_colors[0]="31"
 fi
 
 # Inside a prompt function, run this alias to setup local $c0-$c9 color vars.
@@ -66,7 +65,7 @@ function prompt_git() {
   if [[ "$flags" ]]; then
     output="$output$c1:$c0$flags"
   fi
-  echo "$c1[$c0$output$c1]$c9"
+  echo "$c1[$c3$output$c1]$c9"
 }
 
 # hg status.
@@ -85,9 +84,9 @@ function prompt_hg() {
   )"
   output="$output:$bookmark"
   if [[ "$flags" ]]; then
-    output="$output$c1:$c0$flags"
+    output="$output$c1:$c3$flags"
   fi
-  echo "$c1[$c0$output$c1]$c9"
+  echo "$c1[$c3$output$c1]$c9"
 }
 
 # SVN info.
@@ -98,7 +97,7 @@ function prompt_svn() {
   if [[ "$info" ]]; then
     last="$(echo "$info" | awk '/Last Changed Rev:/ {print $4}')"
     current="$(echo "$info" | awk '/Revision:/ {print $2}')"
-    echo "$c1[$c0$last$c1:$c0$current$c1]$c9"
+    echo "$c1[$c3$last$c1:$c3$current$c1]$c9"
   fi
 }
 
@@ -121,7 +120,13 @@ function prompt_command() {
 
   prompt_getcolors
   # http://twitter.com/cowboy/status/150254030654939137
-  PS1="\n"
+  PS1="\n$c1 ┌┤$c9"
+  # exit code: 127
+  PS1="$PS1$(prompt_exitcode "$exit_code") "
+  # date: [HH:MM:SS]
+  PS1="$PS1$c1[$(date +"%H:%M:%S")]$c9 "
+  # path: [user@host:path]
+  PS1="$PS1$c0\u$c1@$c0\h$c1:$c0\w$c9 "
   # svn: [repo:lastchanged]
   PS1="$PS1$(prompt_svn)"
   # git: [branch:flags]
@@ -130,14 +135,8 @@ function prompt_command() {
   PS1="$PS1$(prompt_hg)"
   # misc: [cmd#:hist#]
   # PS1="$PS1$c1[$c0#\#$c1:$c0!\!$c1]$c9"
-  # path: [user@host:path]
-  PS1="$PS1$c1[$c0\u$c1@$c0\h$c1:$c0\w$c1]$c9"
   PS1="$PS1\n"
-  # date: [HH:MM:SS]
-  PS1="$PS1$c1[$c0$(date +"%H$c1:$c0%M$c1:$c0%S")$c1]$c9"
-  # exit code: 127
-  PS1="$PS1$(prompt_exitcode "$exit_code")"
-  PS1="$PS1 \$ "
+  PS1="$PS1$c1 └╼$c9 "
 }
 
 PROMPT_COMMAND="prompt_command"
