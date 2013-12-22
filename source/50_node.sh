@@ -11,6 +11,9 @@ if [[ "$(type -P nave)" ]]; then
   fi
 fi
 
+module=/usr/local/lib/node_modules/coffee-script
+PATH=$module:$(path_remove $module)
+
 npm_globals=(grunt-cli grunt-init linken bower node-inspector yo)
 
 # Fetch and build the latest stable Node.js, assigning it the alias "default"
