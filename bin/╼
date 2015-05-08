@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Equivalent to "$ somecommand" but a match for my unusual prompt.
+# -bash: ╼: command not found
+
+# Begone, silly errors! Lazy copy + paste forever!! ETCETERA!!!!
+
+echo 'Missed a spot, Mr. Copypasta.'
+"$@"
