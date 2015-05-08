@@ -13,6 +13,9 @@ fi
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
+# Use GNU Tar
+alias tar=gtar
+
 # Make 'less' more.
 eval "$(lesspipe.sh)"
 
@@ -22,35 +25,10 @@ alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resou
 # Open finder to the current path.
 alias finder='open /System/Library/CoreServices/Finder.app $PWD'
 
-# Create a new Parallels VM from template, replacing the existing one.
-function vm_template() {
-  local name="$@"
-  local basename="$(basename "$name" ".zip")"
-  local dest_dir="$HOME/Documents/Parallels"
-  local dest="$dest_dir/$basename"
-  local src_dir="$dest_dir/Templates"
-  local src="$src_dir/$name"
-  if [[ ! "$name" || ! -e "$src" ]]; then
-    echo "You must specify a valid VM template from this list:";
-    shopt -s nullglob
-    for f in "$src_dir"/*.pvm "$src_dir"/*.pvm.zip; do
-      echo " * $(basename "$f")"
-    done
-    shopt -u nullglob
-    return 1
-  fi
-  if [[ -e "$dest" ]]; then
-    echo "Deleting old VM"
-    rm -rf "$dest"
-  fi
-  echo "Restoring VM template"
-  if [[ "$name" == "$basename" ]]; then
-    cp -R "$src" "$dest"
-  else
-    unzip -q "$src" -d "$dest_dir" && rm -rf "$dest_dir/__MACOSX"
-  fi && \
-  echo "Starting VM" && \
-  open -g "$dest"
+# After editing /etc/asl.conf
+logReset() {
+  sudo launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist
+  sudo launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
 }
 
 # Export Localization.prefPane text substitution rules.
