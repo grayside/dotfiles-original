@@ -22,3 +22,6 @@ fi
 
 alias genpass="LANG=c < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;"
 alias genpass2="openssl rand -base64 16"
+
+# Disable ansible cows }:]
+export ANSIBLE_NOCOWS=1
