@@ -37,6 +37,8 @@ npm_globals=(
   linken
   node-inspector
   yo
+  generator-gadget
+  browserify
 )
 
 # Update npm and install global modules.
