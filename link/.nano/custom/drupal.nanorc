@@ -1,0 +1,31 @@
+# Drupal syntax highlighting
+##
+syntax "drupal" "\.module$" "\.install$" "\.inc$" "\.view$" "\.tpl.php$"
+
+#functions
+color brightmagenta "([A-Za-z0-9])"
+#numbers
+color brightblue "[0-9]"
+
+# php keywords
+color brightwhite "(^|[^A-Za-z0-9])(<\?php|\?>|var|and|or|default|class|extends|true|false|global|function|new|switch|case|break|next|prev|elseif|if|else|foreach|for|as|do|while|exit|die|declare|require_once|require|include_once|include|return|echo|static|array|isset)([^A-Za-z0-9])"
+
+#drupal functions
+## core functions
+color blue "(arg|base_path|cache_get|cache_set|check_file|check_markup|check_plain|check_url|confirm_form|date_validate|db_query|db_result|db_rewrite_sql|decode_entities|file_scan_directory|format_date|l|module_exists|module_invoke_all|node_get_types|node_save|node_submit|system_settings_form|t|theme|variable_get|variable_set)\W"
+color blue start="drupal_" end="\W"
+
+#types
+color brightred "([^A-Za-z0-9])|[^A-Za-z](null|int|string|float|bool|object|resource)[^A-Za-z0-9_]+[^A-Za-z]"
+#strings
+color brightyellow ""(\\.|[^\"])*""
+color brightyellow "'(\\.|[^\'])*'"
+#Variables
+color brightcyan "\$[]\[A-Za-z0-9_'\"]*"
+
+#comments
+color green "//.*"
+color green start="/\*" end="\*/"
+
+# Emphasize hooks in comments
+color brightgreen start="hook_" end="\)"

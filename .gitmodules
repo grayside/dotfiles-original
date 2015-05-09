@@ -31,3 +31,6 @@
 [submodule "rbenv-update"]
 	path = link/.rbenv/plugins/rbenv-update
 	url = git://github.com/rkh/rbenv-update.git
+[submodule "link/.nano/upstream"]
+	path = link/.nano/upstream
+	url = git@github.com:scopatz/nanorc

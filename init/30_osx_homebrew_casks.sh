@@ -57,6 +57,8 @@ casks=(
   vagrant
   virtualbox
   vlc
+  android-file-transfer
+  nano
   # Drivers
   d235j-xbox360-controller-driver
   # Quick Look plugins
@@ -73,7 +75,6 @@ casks=(
   # Color pickers
   colorpicker-developer
   colorpicker-skalacolor
-  android-file-transfer
 )
 
 # Install Homebrew casks.
