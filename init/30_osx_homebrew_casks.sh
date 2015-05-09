@@ -21,7 +21,6 @@ casks=(
   # Applications
   1password
   a-better-finder-rename
-  battle-net
   bettertouchtool
   charles
   chromium
@@ -46,13 +45,9 @@ casks=(
   sharemouse
   skype
   slack
-  sonos
   sourcetree
   spotify
-  star-realms
-  steam
   synology-assistant
-  teamspeak-client
   teamviewer
   the-unarchiver
   todoist
@@ -78,6 +73,7 @@ casks=(
   # Color pickers
   colorpicker-developer
   colorpicker-skalacolor
+  android-file-transfer
 )
 
 # Install Homebrew casks.
