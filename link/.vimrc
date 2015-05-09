@@ -21,6 +21,17 @@ augroup END
 
 " Theme / Syntax highlighting
 
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.profile set filetype=php
+  augroup END
+endif
+
 " Make invisible chars less visible in terminal.
 autocmd vimrc ColorScheme * :hi NonText ctermfg=236
 autocmd vimrc ColorScheme * :hi SpecialKey ctermfg=236
