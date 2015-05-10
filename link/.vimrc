@@ -21,17 +21,6 @@ augroup END
 
 " Theme / Syntax highlighting
 
-if has("autocmd")
-  " Drupal *.module and *.install files.
-  augroup module
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
-    autocmd BufRead,BufNewFile *.inc set filetype=php
-    autocmd BufRead,BufNewFile *.profile set filetype=php
-  augroup END
-endif
-
 " Make invisible chars less visible in terminal.
 autocmd vimrc ColorScheme * :hi NonText ctermfg=236
 autocmd vimrc ColorScheme * :hi SpecialKey ctermfg=236
@@ -275,4 +264,5 @@ Plug 'wavded/vim-stylus'
 Plug 'klen/python-mode', {'for': 'python'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'wting/rust.vim', {'for': 'rust'}
+Plug 'http://git.drupal.org/project/vimrc.git', { 'branch': '7.x-1.x', 'rtp': 'bundle/vim-plugin-for-drupal' }
 call plug#end()
