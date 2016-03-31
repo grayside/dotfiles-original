@@ -23,3 +23,6 @@ function dotfiles() {
 }
 
 src
+
+export NVM_DIR="/Users/aross/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
