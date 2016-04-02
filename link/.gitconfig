@@ -15,7 +15,7 @@
   # Information #
   branches = for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short), last updated %(committerdate:relative) by %(authorname)'
   contributors = shortlog --summary --numbered
-	contributors-recurse = "!count-commits"
+  contributors-recurse = "!count-commits"
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   list-changed = ls-files -m
   lc = ls-files -m
@@ -92,13 +92,6 @@
   pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
   insteadOf = "github:"
-# git clone my:<repo>
-[url "git@github.com:grayside/"]
-  insteadOf = "my:"
-  pushInsteadOf = "grayside:"
-  pushInsteadOf = "git://github.com/grayside"
-[url "git://github.com/grayside/"]
-  insteadOf = "grayside:"
 # git clone gst:<user>/<repo>
 [url "git@gist.github.com:"]
   insteadOf = "gst:"
@@ -113,10 +106,3 @@
   pushInsteadOf = "git://bitbucket.org/"
 [url "git://bitbucket.org/"]
   insteadOf = "bitbucket:"
-# git clone p2:<repo>
-[url "git@bitbucket.org:phase2tech/"]
-  insteadOf = "p2:"
-  pushInsteadOf = "phase2:"
-  pushInsteadOf = "git://bitbucket.org/phase2tech"
-[url "git://bitbucket.org/phase2tech/"]
-  insteadOf = "phase2:"
