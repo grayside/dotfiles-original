@@ -5,7 +5,10 @@ is_osx || return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew casks need Homebrew to install." && return 1
 
 # Ensure the cask keg and recipe are installed.
-kegs=(caskroom/cask)
+kegs=(
+  caskroom/cask
+  phase2/devtools
+)
 brew_tap_kegs
 recipes=(brew-cask)
 brew_install_recipes
@@ -20,47 +23,37 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 casks=(
   # Applications
   1password
-  a-better-finder-rename
-  bettertouchtool
-  charles
   chromium
-  chronosync
+  devtools
   dropbox
-  easysimbl
   fastscripts
   firefox
+  flowdock
   google-chrome
   gyazo
   hermes
   hex-fiend
   iterm2
-  launchbar
   macvim
-  menumeters
-  moom
   omnidisksweeper
+  phase2/devtools/docker
+  phase2/devtools/docker-machine
+  phase2/devtools/docker-compose
   race-for-the-galaxy
   remote-desktop-connection
-  scroll-reverser
-  sharemouse
   skype
   slack
   sourcetree
   spotify
-  synology-assistant
   teamviewer
   the-unarchiver
   todoist
-  totalfinder
-  tower
   transmission-remote-gui
   vagrant
   virtualbox
   vlc
   android-file-transfer
   nano
-  # Drivers
-  d235j-xbox360-controller-driver
   # Quick Look plugins
   betterzipql
   qlcolorcode
